@@ -5,13 +5,13 @@ const express = require("express");
 const router = express.Router();
 
 //Import controllers
-const appController=require("../controllers/appController");
+const authController = require("../controllers/authController");
 
 //Index page
-router.get("/",appController.getIndex);
+router.get("/login", authController.getLogIn);
 
 //Signup page
-router.get("/signup",appController.getSignUp);
+router.get("/signup", authController.getSignUp);
 
 
 //Export router

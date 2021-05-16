@@ -1,11 +1,12 @@
 //Import modules
-const path=require("path");
+const path = require("path");
 
 const express = require("express");
 const ejs = require("ejs");
 
 //Import routes
-const indexRoutes = require("./routes/index");
+const authRoutes = require("./routes/authRoutes");
+const appRoutes = require("./routes/indexRoutes");
 
 //Instantiate express app
 const app = express();
@@ -15,10 +16,11 @@ app.set("view engine", "ejs");
 app.set("views", "views");
 
 //Set static folder
-app.use(express.static(path.join(__dirname,"public")));
+app.use(express.static(path.join(__dirname, "public")));
 
 //Use routes
-app.use(indexRoutes);
+app.use(appRoutes);
+app.use(authRoutes);
 
 
 //Run server

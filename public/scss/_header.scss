@@ -1,0 +1,33 @@
+@import "variables.scss";
+
+header{
+    width:100vw;
+    height:10vh;
+    background-color:var(--primary-color);
+    nav{
+        height: inherit;
+        display: flex;
+        justify-content:space-between;
+        align-items: center;
+        margin:0 4rem;
+    ul{
+        display: flex;
+        align-items: center;
+        list-style-type: none;
+        li{
+            margin:0 2rem;
+            a{
+                color:white;
+                text-decoration: none;
+                font-size: var(--medium-text);
+            }
+            &:nth-child(1) a{
+                font-size: 3rem;
+                font-family: Poppins-Bold;
+                letter-spacing: 0.3rem;
+            }
+            
+        }
+    }
+}
+}

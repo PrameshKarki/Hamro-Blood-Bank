@@ -38,6 +38,7 @@ html {
 
 :root {
   --primary-color:rgb(78,78,214);
+  --secondary-color:#e81500;
   --large-text:2.5rem;
   --medium-text:2rem;
   --small-text:1.8rem;
@@ -98,6 +99,7 @@ html {
 
 :root {
   --primary-color:rgb(78,78,214);
+  --secondary-color:#e81500;
   --large-text:2.5rem;
   --medium-text:2rem;
   --small-text:1.8rem;
@@ -165,24 +167,186 @@ html {
   color: var(--primary-color);
 }
 
-button[type="submit"] {
+:root {
+  --primary-color:rgb(78,78,214);
+  --secondary-color:#e81500;
+  --large-text:2.5rem;
+  --medium-text:2rem;
+  --small-text:1.8rem;
+}
+
+header {
+  width: 100vw;
+  height: 10vh;
+  background-color: var(--primary-color);
+}
+
+header nav {
+  height: inherit;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 4rem;
+}
+
+header nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  list-style-type: none;
+}
+
+header nav ul li {
+  margin: 0 2rem;
+}
+
+header nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: var(--medium-text);
+}
+
+header nav ul li:nth-child(1) a {
+  font-size: 3rem;
+  font-family: Poppins-Bold;
+  letter-spacing: 0.3rem;
+}
+
+footer {
+  position: relative;
+  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  height: 20rem;
+  padding: 4rem 1rem 0 1rem;
+  margin-top: auto;
+  color: white;
+  background-color: var(--primary-color);
+}
+
+.our-details {
+  font-size: var(--medium-text);
+}
+
+.our-contactinformation {
+  font-size: var(--small-text);
+  line-height: 1.7;
+}
+
+.our-contactinformation ul {
+  list-style-type: none;
+}
+
+.our-contactinformation ul li {
+  margin: 0.5rem 0;
+}
+
+.links ul {
+  list-style-type: none;
+}
+
+.links ul li {
+  margin: 0.5rem 0;
+}
+
+.links a {
+  color: white;
+  font-size: var(--small-text);
+  text-decoration: none;
+}
+
+.social-medias ul {
+  list-style-type: none;
+}
+
+.social-medias li {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  line-height: 2;
+  text-align: center;
+  font-size: 1.5rem;
+  margin: 1rem 0;
+}
+
+.social-medias li:nth-child(1) {
+  background-color: #3b5999;
+}
+
+.social-medias li:nth-child(2) {
+  background-color: #0077b5;
+}
+
+.social-medias li:nth-child(3) {
+  background-color: #e4405f;
+}
+
+.social-medias a {
+  color: white;
+}
+
+@media only screen and (max-width: 500px) {
+  footer {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .links {
+    display: none;
+  }
+  .our-contactinformation {
+    padding: 0 1.5rem;
+  }
+}
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+.btn {
   display: block;
-  width: 25rem;
   height: 5rem;
   font-size: var(--medium-text);
   border-radius: 4rem;
-  margin: 3rem auto 0 auto;
   border: none;
   outline: none;
-  background-color: var(--primary-color);
   color: white;
   cursor: pointer;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
 }
 
-button[type="submit"]:hover {
+.btn:hover {
   -webkit-box-shadow: 0 0.5rem 1.4rem rgba(0, 0, 0, 0.25);
           box-shadow: 0 0.5rem 1.4rem rgba(0, 0, 0, 0.25);
+}
+
+button[type="submit"] {
+  width: 25rem;
+  margin: 3rem auto 0 auto;
+  background-color: var(--primary-color);
+}
+
+.btn-signout {
+  width: 13rem !important;
+  margin: 0 !important;
+  height: 4.4rem !important;
+  background-color: var(--secondary-color) !important;
 }
 /*# sourceMappingURL=main.css.map */

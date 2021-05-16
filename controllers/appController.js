@@ -1,11 +1,19 @@
 exports.getIndex = (req, res) => {
     res.render("index", {
-        pageTitle: "Welcome to Hamro Blood Bank"
+        pageTitle: "Home-Hamro Blood Bank"
     })
 }
 
-exports.getSignUp = (req, res) => {
-    res.render("signup", {
-        pageTitle: "Sign Up-Hamro Blood Bank"
+exports.getDetails = (req, res) => {
+    res.render("details", {
+        pageTitle: "Details-Hamro Blood Bank"
     })
 }
+
+exports.getManage = (req, res) => {
+    res.render("manage", {
+        pageTitle: "Manage-Hamro Blood Bank"
+    })
+}
+
+
