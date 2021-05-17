@@ -13,6 +13,71 @@
 
 <body>
     <%- include("includes/header") %>
+        <main class="details">
+            <div class="header">
+                <button class="btn btn-add-record" >Add Record</button>
+                <form action="/search">
+                    <input type="search" name="search" placeholder="Search Here">
+                    <button type="submit" class="btn btn-search">Search</button>
+                </form>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Blood Group</th>
+                        <th>Email</th>
+                        <th>Contact Number</th>
+                        <th>Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>112121212</td>
+                        <td>Pramesh Karki</td>
+                        <td>O +ve</td>
+                        <td><a href="mailto:Prameshkarki0407@gmail.com">Prameshkarki0407@gmail.com</a></td>
+                        <td><a href="phoneto:+9779842473580">9842473580</a></td>
+                        <td>Terhathum,Nepal</td>
+                        <td class="buttons-container">
+                            <button class="btn-small">
+                                <a href="/edit" title="Edit"> <img src="images/edit.png" alt="edit"></a>
+                            </button>
+                            <form action="/delete-user">
+                                <button type="submit" class="btn-small" title="Delete">
+                                    <img src="images/delete.png" alt="delete">
+                                </button>
+
+                            </form>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>112121212</td>
+                        <td>Pramesh Karki</td>
+                        <td>O +ve</td>
+                        <td><a href="mailto:Prameshkarki0407@gmail.com">Prameshkarki0407@gmail.com</a></td>
+                        <td><a href="phoneto:+9779842473580">9842473580</a></td>
+                        <td>Terhathum,Nepal</td>
+                        <td class="buttons-container">
+                            <button class="btn-small">
+                                <a href="/edit" title="Edit"> <img src="images/edit.png" alt="edit"></a>
+                            </button>
+                            <form action="/delete-user">
+                                <button type="submit" class="btn-small" title="Delete">
+                                    <img src="images/delete.png" alt="delete">
+                                </button>
+
+                            </form>
+
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </main>
+
         <%- include("includes/footer") %>
 
 </body>

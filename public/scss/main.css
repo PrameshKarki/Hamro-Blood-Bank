@@ -167,15 +167,15 @@ html {
   color: var(--primary-color);
 }
 
-main {
+main.dashboard {
   padding: 2rem 5rem;
 }
 
-main h2 {
+main.dashboard h2 {
   font-size: var(--large-text);
 }
 
-main .container {
+main.dashboard .container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -185,12 +185,12 @@ main .container {
           flex-direction: column;
 }
 
-main .container .heading {
+main.dashboard .container .heading {
   font-size: var(--medium-text);
   margin: 0.5rem 0;
 }
 
-main .container .row-one, main .container .row-two {
+main.dashboard .container .row-one, main.dashboard .container .row-two {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -202,7 +202,7 @@ main .container .row-one, main .container .row-two {
   margin: 1rem 0;
 }
 
-main .container .row-one .item, main .container .row-two .item {
+main.dashboard .container .row-one .item, main.dashboard .container .row-two .item {
   width: 19rem;
   height: 14rem;
   margin: 1rem 2rem;
@@ -212,24 +212,117 @@ main .container .row-one .item, main .container .row-two .item {
           box-shadow: 0 0.5rem 1.4rem rgba(0, 0, 0, 0.25);
 }
 
-main .container .row-one .item h3, main .container .row-two .item h3 {
+main.dashboard .container .row-one .item h3, main.dashboard .container .row-two .item h3 {
   font-size: var(--medium-text);
 }
 
-main .container .row-one .item p, main .container .row-two .item p {
+main.dashboard .container .row-one .item p, main.dashboard .container .row-two .item p {
   font-size: calc(var(--large-text) + 1rem);
   font-family: Poppins-SemiBold;
   margin-top: 0.5rem;
 }
 
-main .container .row-one {
+main.dashboard .container .row-one {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
 }
 
-main .container .row-two {
+main.dashboard .container .row-two {
   margin-left: 7rem;
+}
+
+main.details {
+  padding: 2rem 3rem;
+}
+
+main.details .header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main.details form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main.details form input[type="search"] {
+  border: 0.1rem solid var(--primary-color);
+  border-radius: 2rem;
+  outline: none;
+  padding: 0 1rem;
+  width: 25rem;
+  font-size: var(--medium-text);
+  height: 4rem;
+}
+
+main.details table {
+  margin-top: 2rem;
+  width: 100%;
+}
+
+main.details table tr:hover {
+  background-color: #f5f5f5;
+}
+
+main.details table tr:hover td.buttons-container {
+  visibility: visible;
+}
+
+main.details table thead th {
+  font-size: var(--medium-text);
+  background-color: var(--primary-color);
+  color: white;
+  padding: 1rem 0;
+}
+
+main.details table tbody td {
+  text-align: center;
+  font-size: var(--small-text);
+  border-bottom: 0.1rem solid #ddd;
+  padding: 1rem 0;
+}
+
+main.details table tbody td a {
+  text-decoration: none;
+  color: black;
+}
+
+main.details table tbody td.buttons-container {
+  visibility: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+main.details table tbody td.buttons-container button {
+  background: none;
+  border: none;
+  outline: none;
+  margin: 0 0.5rem;
+  cursor: pointer;
+}
+
+main.details table tbody td.buttons-container img {
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 :root {
@@ -402,16 +495,28 @@ body {
           box-shadow: 0 0.5rem 1.4rem rgba(0, 0, 0, 0.25);
 }
 
-button[type="submit"] {
+.btn-login, .btn-signup {
   width: 25rem;
   margin: 3rem auto 0 auto;
   background-color: var(--primary-color);
 }
 
 .btn-signout {
-  width: 13rem !important;
-  margin: 0 !important;
-  height: 4.4rem !important;
-  background-color: var(--secondary-color) !important;
+  width: 13rem;
+  margin: 0;
+  height: 4.4rem;
+  background-color: var(--secondary-color);
+}
+
+.btn-search {
+  width: 10.5rem;
+  margin: 0 0.5rem;
+  height: 4.4rem;
+  background-color: var(--primary-color);
+}
+
+.btn-add-record {
+  background-color: var(--primary-color);
+  width: 18rem;
 }
 /*# sourceMappingURL=main.css.map */

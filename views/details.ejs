@@ -13,6 +13,39 @@
 
 <body>
     <%- include("includes/header") %>
+        <main class="details">
+            <form action="/search">
+                <input type="search" name="search" placeholder="Search Here">
+                <button type="submit" class="btn btn-search">Search</button>
+            </form>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Blood Group</th>
+                        <th>Email</th>
+                        <th>Contact Number</th>
+                        <th>Address</th>
+                        <th>Added By</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>112121212</td>
+                        <td>Pramesh Karki</td>
+                        <td>O +ve</td>
+                        <td><a href="mailto:Prameshkarki0407@gmail.com">Prameshkarki0407@gmail.com</a></td>
+                        <td><a href="phoneto:+9779842473580">9842473580</a></td>
+                        <td>Terhathum,Nepal</td>
+                        <td>Sanjib</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </main>
+
+
         <%- include("includes/footer") %>
 
 </body>
