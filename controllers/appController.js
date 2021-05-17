@@ -16,4 +16,10 @@ exports.getManage = (req, res) => {
     })
 }
 
+exports.getAddRecord=(req,res)=>{
+    res.render("add-record",{
+        pageTitle:"Add Record-Hamro Blood Bank"
+    })
+}
+
 

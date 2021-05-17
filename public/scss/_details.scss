@@ -4,6 +4,11 @@ main.details{
         display: flex;
         justify-content: space-between;
         align-items: center;
+        a{
+            text-align: center;
+            text-decoration: none;
+            line-height: 5rem;
+        }
     }
     form{
         display: flex;

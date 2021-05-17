@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= pageTitle %>
+    </title>
+    <link rel="stylesheet" href="scss/main.css">
+</head>
+
+<body>
+    <%- include("includes/header") %>
+        <section class="add-record">
+            <h2>Add Record:</h2>
+            <p>Please enter valid information:</p>
+            <form action="/add-record" method="POST" name="add-record-form">
+                <div class="form-control">
+                    <label for="image">Image:</label>
+                    <input type="file" name="image" id="imagePicker">
+                </div>
+                <div class="form-control">
+                    <input type="text" name="firstName" placeholder="First Name" required>
+                    <input type="text" name="lastName" placeholder="Last Name" required>
+                </div>
+                <div class="form-control">
+                    <input type="text" name="address" id="address" placeholder="Address" required>
+                    <div class="dateOfBirth">
+                        <label for="dateOfBirth">Date Of Birth*:</label>
+                        <input type="date" name="dateOfBirth" id="dateOfBirth" required>
+                    </div>
+                </div>
+                <div class="form-control">
+                    <input type="email" name="email" id="email" placeholder="Email">
+                    <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Phone Number">
+                </div>
+                <div class="form-control">
+                    <label for="bloodGroup">Blood Group*:</label>
+                    <select name="bloodGroup" id="bloodGroup">
+                        <option value="" selected disabled hidden>Choose Here</option>
+                        <option value="A +ve">A +ve</option>
+                        <option value="A -ve">A -ve</option>
+                        <option value="B +ve">B +ve</option>
+                        <option value="B -ve">B -ve</option>
+                        <option value="AB +ve">AB +ve</option>
+                        <option value="AB -ve">AB -ve</option>
+                        <option value="O +ve">O +ve</option>
+                        <option value="O -ve">O -ve</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-add-record btn-center">Add Record</button>
+            </form>
+            <img src="images/test.JPG" id="imagePreview" alt="Your image">
+        </section>
+        <%- include("includes/footer") %>
+
+            <script>
+                const imagePicker = document.getElementById("imagePicker");
+                const imagePreview = document.getElementById("imagePreview")
+                imagePicker.onchange = event => {
+                    imagePreview.style.display = "block";
+                    const [file] = imagePicker.files;
+                    if (file) {
+                        imagePreview.src = URL.createObjectURL(file);
+                    }
+                }
+
+            </script>
+</body>
+
+</html>

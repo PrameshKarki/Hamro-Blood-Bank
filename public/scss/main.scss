@@ -6,6 +6,7 @@
 @import "signup.scss";
 @import "index.scss";
 @import "details.scss";
+@import "add-record.scss";
 
 @import "header.scss";
 @import "footer.scss";
@@ -34,7 +35,6 @@ body{
 
 .btn-login,.btn-signup{
     width:25rem;
-    margin:3rem auto 0 auto;
     background-color:var(--primary-color);
 }
 
@@ -55,4 +55,9 @@ body{
     background-color:var(--primary-color);
     width:18rem;
     
+}
+.btn-center{
+    margin:3rem auto 0 auto;
+
+
 }

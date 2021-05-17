@@ -1,0 +1,58 @@
+section.add-record{
+    position: relative;
+    padding: 2rem 5rem;
+    h2{
+        font-size: var(--large-text);
+    }
+    p{
+        font-size: var(--small-text);
+        font-family: Poppins-Italic;
+    }
+    form{
+        width:60%;
+        margin:2rem auto ;
+        
+        .form-control{
+            display: flex;
+            &:nth-child(1){
+                margin-bottom: 1.5rem;
+            }
+        }
+        input[type="text"],input[type="email"],input[type="password"]{
+            height:4rem;
+            font-size:var(--medium-text);
+            margin:0 1rem 2rem 0;
+            border: none;
+            border-bottom: 0.15rem solid grey;
+            outline:none;
+            &:hover,&:active{
+                border-color: var(--primary-color);
+            }
+
+        }
+        .dateOfBirth{
+            display: flex;
+            align-items: center;    
+            
+            
+        }
+        label{
+            margin-right: 2rem;
+            font-size:var(--small-text);
+        }
+        option,select{
+            font-size:var(--small-text);
+
+        }
+    }
+    img{
+        display:none;
+        position: absolute;
+        right:5rem;
+        top:4rem;
+        width:20rem;
+        height:20rem;
+        border-radius: 50%;
+        
+    }
+}

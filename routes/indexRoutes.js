@@ -16,5 +16,8 @@ router.get("/details",appController.getDetails);
 //Manage Page
 router.get("/manage",appController.getManage);
 
+//Add Record
+router.get("/add-record",appController.getAddRecord);
+
 //Export router
 module.exports=router;

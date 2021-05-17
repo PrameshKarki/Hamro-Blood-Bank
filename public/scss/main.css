@@ -248,6 +248,12 @@ main.details .header {
           align-items: center;
 }
 
+main.details .header a {
+  text-align: center;
+  text-decoration: none;
+  line-height: 5rem;
+}
+
 main.details form {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -323,6 +329,76 @@ main.details table tbody td.buttons-container button {
 main.details table tbody td.buttons-container img {
   width: 2.5rem;
   height: 2.5rem;
+}
+
+section.add-record {
+  position: relative;
+  padding: 2rem 5rem;
+}
+
+section.add-record h2 {
+  font-size: var(--large-text);
+}
+
+section.add-record p {
+  font-size: var(--small-text);
+  font-family: Poppins-Italic;
+}
+
+section.add-record form {
+  width: 60%;
+  margin: 2rem auto;
+}
+
+section.add-record form .form-control {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+section.add-record form .form-control:nth-child(1) {
+  margin-bottom: 1.5rem;
+}
+
+section.add-record form input[type="text"], section.add-record form input[type="email"], section.add-record form input[type="password"] {
+  height: 4rem;
+  font-size: var(--medium-text);
+  margin: 0 1rem 2rem 0;
+  border: none;
+  border-bottom: 0.15rem solid grey;
+  outline: none;
+}
+
+section.add-record form input[type="text"]:hover, section.add-record form input[type="text"]:active, section.add-record form input[type="email"]:hover, section.add-record form input[type="email"]:active, section.add-record form input[type="password"]:hover, section.add-record form input[type="password"]:active {
+  border-color: var(--primary-color);
+}
+
+section.add-record form .dateOfBirth {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+section.add-record form label {
+  margin-right: 2rem;
+  font-size: var(--small-text);
+}
+
+section.add-record form option, section.add-record form select {
+  font-size: var(--small-text);
+}
+
+section.add-record img {
+  display: none;
+  position: absolute;
+  right: 5rem;
+  top: 4rem;
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
 }
 
 :root {
@@ -497,7 +573,6 @@ body {
 
 .btn-login, .btn-signup {
   width: 25rem;
-  margin: 3rem auto 0 auto;
   background-color: var(--primary-color);
 }
 
@@ -518,5 +593,9 @@ body {
 .btn-add-record {
   background-color: var(--primary-color);
   width: 18rem;
+}
+
+.btn-center {
+  margin: 3rem auto 0 auto;
 }
 /*# sourceMappingURL=main.css.map */
