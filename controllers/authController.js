@@ -100,3 +100,8 @@ exports.postLogIn = (req, res) => {
     })
 
 }
+
+exports.postLogOut = (req, res) => {
+    req.session.destroy();
+    res.redirect("/login");
+}

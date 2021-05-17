@@ -576,7 +576,7 @@ body {
   background-color: var(--primary-color);
 }
 
-.btn-signout {
+.btn-logout {
   width: 13rem;
   margin: 0;
   height: 4.4rem;

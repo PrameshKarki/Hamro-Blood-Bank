@@ -16,11 +16,14 @@ const User = require("../models/User");
 //Import bcryptJS
 const bcrypt = require("bcryptjs");
 
+//Import Middleware
+const { ensureAuth, ensureGuest } = require("../middleware/isAuth");
+
 //Index page
-router.get("/login", authController.getLogIn);
+router.get("/login", ensureGuest, authController.getLogIn);
 
 //Signup page
-router.get("/signup", authController.getSignUp);
+router.get("/signup", ensureGuest, authController.getSignUp);
 
 //Post:=>SignUp Page
 router.post("/signup", [
@@ -44,7 +47,9 @@ router.post("/signup", [
     })
 ], authController.postSignUp);
 
-router.post("/login",authController.postLogIn);
+router.post("/login", authController.postLogIn);
+
+router.post("/logout", authController.postLogOut);
 
 
 //Export router
