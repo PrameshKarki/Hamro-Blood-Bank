@@ -167,6 +167,71 @@ html {
   color: var(--primary-color);
 }
 
+main {
+  padding: 2rem 5rem;
+}
+
+main h2 {
+  font-size: var(--large-text);
+}
+
+main .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+main .container .heading {
+  font-size: var(--medium-text);
+  margin: 0.5rem 0;
+}
+
+main .container .row-one, main .container .row-two {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 1rem 0;
+}
+
+main .container .row-one .item, main .container .row-two .item {
+  width: 19rem;
+  height: 14rem;
+  margin: 1rem 2rem;
+  padding: 2rem;
+  text-align: center;
+  -webkit-box-shadow: 0 0.5rem 1.4rem rgba(0, 0, 0, 0.25);
+          box-shadow: 0 0.5rem 1.4rem rgba(0, 0, 0, 0.25);
+}
+
+main .container .row-one .item h3, main .container .row-two .item h3 {
+  font-size: var(--medium-text);
+}
+
+main .container .row-one .item p, main .container .row-two .item p {
+  font-size: calc(var(--large-text) + 1rem);
+  font-family: Poppins-SemiBold;
+  margin-top: 0.5rem;
+}
+
+main .container .row-one {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+main .container .row-two {
+  margin-left: 7rem;
+}
+
 :root {
   --primary-color:rgb(78,78,214);
   --secondary-color:#e81500;
@@ -240,16 +305,16 @@ footer {
   font-size: var(--medium-text);
 }
 
-.our-contactinformation {
+.our-contact-information {
   font-size: var(--small-text);
   line-height: 1.7;
 }
 
-.our-contactinformation ul {
+.our-contact-information ul {
   list-style-type: none;
 }
 
-.our-contactinformation ul li {
+.our-contact-information ul li {
   margin: 0.5rem 0;
 }
 
@@ -305,7 +370,7 @@ footer {
   .links {
     display: none;
   }
-  .our-contactinformation {
+  .our-contact-information {
     padding: 0 1.5rem;
   }
 }
