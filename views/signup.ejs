@@ -24,12 +24,12 @@
             </div>
             <div class="signup-main">
                 <form action="/signup" method="POST" name="signup-form">
-                    <input type="text" name="firstName" placeholder="First Name" required>
-                    <input type="text" name="lastName" placeholder="lastName" required>
-                    <input type="text" name="contactNumber" placeholder="Contact Number" required>
-                    <input type="email" name="email" placeholder="Email" required>
-                    <input type="password" name="password" id="password" placeholder="Password" required>
-                    <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password"
+                    <input type="text" name="firstName" placeholder="First Name" value="<%=oldValue.firstName %>" class="<%= errors.find(i=>i.param==='firstName') ? 'invalid' : ' ' %>" required>
+                    <input type="text" name="lastName" placeholder="lastName" value="<%=oldValue.lastName %>" class="<%= errors.find(i=>i.param==='lastName') ? 'invalid' : ' ' %>"required>
+                    <input type="text" name="contactNumber" placeholder="Contact Number" value="<%=oldValue.contactNumber %>" class="<%= errors.find(i=>i.param==='contactNumber') ? 'invalid' : ' '%>" required>
+                    <input type="email" name="email" placeholder="Email" value="<%=oldValue.email %>" class="<%= errors.find(i=>i.param==='email') ? 'invalid' : ' '%>" required>
+                    <input type="password" name="password" id="password" placeholder="Password" value="<%=oldValue.password %>" class="<%= errors.find(i=>i.param==='password') ? 'invalid' : ' '%>" required>
+                    <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" value="<%=oldValue.confirmPassword %>" class="<%= errors.find(i=>i.param==='confirmPassword') ? 'invalid' : ' '%>"
                         required>
                     <button type="submit" class="btn btn-signup btn-center">Sign Up</button>
                 </form>

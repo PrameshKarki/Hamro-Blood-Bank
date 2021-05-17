@@ -598,4 +598,12 @@ body {
 .btn-center {
   margin: 3rem auto 0 auto;
 }
+
+.active {
+  color: red;
+}
+
+input.invalid {
+  border-color: red !important;
+}
 /*# sourceMappingURL=main.css.map */

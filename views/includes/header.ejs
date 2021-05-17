@@ -2,8 +2,8 @@
     <nav>
         <ul>
             <li><a href="/" title="Hamro Blood Bank">HBB</a></li>
-            <li><a href="/details">Details</a></li>
-            <li><a href="/manage">Manage</a></li>
+            <li><a class="<% if(path==='/details') { %>active <% }else{ %> ' ' <%}%>" href="/details">Details</a></li>
+            <li><a class="<% if(path==='/manage') { %>active <% }else{ %> ' ' <%}%>" href="/manage">Manage</a></li>
         </ul>
         <form action="/signup" method="POST">
             <button type="submit" class="btn btn-signout">Sign Out</button>
