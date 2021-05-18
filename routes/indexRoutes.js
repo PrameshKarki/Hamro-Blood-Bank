@@ -55,5 +55,8 @@ router.post("/add-record", ensureAuth, [
     })
 ], appController.postAddRecord);
 
+//Delete record
+router.post("/delete-record",appController.postDeleteRecord);
+
 //Export router
 module.exports = router;

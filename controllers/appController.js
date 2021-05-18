@@ -94,6 +94,15 @@ exports.postAddRecord = (req, res) => {
     }
 }
 
+exports.postDeleteRecord = (req, res) => {
+    const body = JSON.parse(JSON.stringify(req.body));
+    Patient.deleteOne({ _id: body.patientID }).then(() => {
+        res.redirect("/manage");
+
+    }).catch(err => {
+        console.log(err);
+    })
+}
 
 
 
