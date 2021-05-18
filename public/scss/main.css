@@ -74,7 +74,7 @@ html {
   margin: 5rem 0;
 }
 
-.login-form-container .login-form .login-main input[type="text"], .login-form-container .login-form .login-main input[type="email"], .login-form-container .login-form .login-main input[type="password"] {
+.login-form-container .login-form .login-main input[type="email"], .login-form-container .login-form .login-main input[type="password"] {
   width: 100%;
   height: 4rem;
   font-size: var(--medium-text);
@@ -84,7 +84,7 @@ html {
   outline: none;
 }
 
-.login-form-container .login-form .login-main input[type="text"]:hover, .login-form-container .login-form .login-main input[type="text"]:active, .login-form-container .login-form .login-main input[type="email"]:hover, .login-form-container .login-form .login-main input[type="email"]:active, .login-form-container .login-form .login-main input[type="password"]:hover, .login-form-container .login-form .login-main input[type="password"]:active {
+.login-form-container .login-form .login-main input[type="email"]:hover, .login-form-container .login-form .login-main input[type="email"]:focus, .login-form-container .login-form .login-main input[type="password"]:hover, .login-form-container .login-form .login-main input[type="password"]:focus {
   border-color: var(--primary-color);
 }
 
@@ -154,7 +154,7 @@ html {
   outline: none;
 }
 
-.signup-form-container .signup-form .signup-main input[type="text"]:hover, .signup-form-container .signup-form .signup-main input[type="text"]:active, .signup-form-container .signup-form .signup-main input[type="email"]:hover, .signup-form-container .signup-form .signup-main input[type="email"]:active, .signup-form-container .signup-form .signup-main input[type="password"]:hover, .signup-form-container .signup-form .signup-main input[type="password"]:active {
+.signup-form-container .signup-form .signup-main input[type="text"]:hover, .signup-form-container .signup-form .signup-main input[type="text"]:focus, .signup-form-container .signup-form .signup-main input[type="email"]:hover, .signup-form-container .signup-form .signup-main input[type="email"]:focus, .signup-form-container .signup-form .signup-main input[type="password"]:hover, .signup-form-container .signup-form .signup-main input[type="password"]:focus {
   border-color: var(--primary-color);
 }
 
@@ -354,6 +354,8 @@ section.add-record form .form-control {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 section.add-record form .form-control:nth-child(1) {
@@ -369,7 +371,7 @@ section.add-record form input[type="text"], section.add-record form input[type="
   outline: none;
 }
 
-section.add-record form input[type="text"]:hover, section.add-record form input[type="text"]:active, section.add-record form input[type="email"]:hover, section.add-record form input[type="email"]:active, section.add-record form input[type="password"]:hover, section.add-record form input[type="password"]:active {
+section.add-record form input[type="text"]:hover, section.add-record form input[type="text"]:focus, section.add-record form input[type="email"]:hover, section.add-record form input[type="email"]:focus, section.add-record form input[type="password"]:hover, section.add-record form input[type="password"]:focus {
   border-color: var(--primary-color);
 }
 
@@ -605,5 +607,13 @@ body {
 
 input.invalid {
   border-color: red !important;
+}
+
+.no-data-warning {
+  color: red;
+  font-size: var(--large-text);
+  text-align: center;
+  font-family: Poppins-Italic;
+  letter-spacing: 0.2rem;
 }
 /*# sourceMappingURL=main.css.map */

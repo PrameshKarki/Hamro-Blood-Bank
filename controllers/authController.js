@@ -6,7 +6,7 @@ const { validationResult } = require("express-validator/check");
 const User = require("../models/User");
 
 exports.getLogIn = (req, res) => {
-    res.render("login", {
+    res.render("auth/login", {
         pageTitle: "Welcome to Hamro Blood Bank",
         errMessages: [],
         oldValue: {
@@ -17,7 +17,7 @@ exports.getLogIn = (req, res) => {
 }
 
 exports.getSignUp = (req, res) => {
-    res.render("signup", {
+    res.render("auth/signup", {
         pageTitle: "Sign Up-Hamro Blood Bank",
         oldValue: {
             firstName: "",
@@ -37,7 +37,7 @@ exports.postSignUp = (req, res) => {
     const errors = validationResult(req);
     //If error occurs in validation
     if (!errors.isEmpty()) {
-        return res.status(422).render("signup", {
+        return res.status(422).render("auth/signup", {
             pageTitle: "Sign Up-Hamro Blood Bank",
             errorMessages: errors.array().map(i => i.msg),
             errors: errors.array(),
@@ -74,7 +74,7 @@ exports.postLogIn = (req, res) => {
                         res.redirect("/");
                     })
                 } else {
-                    res.status(422).render("login", {
+                    res.status(422).render("auth/login", {
                         pageTitle: "Welcome to Hamro Blood Bank",
                         oldValue: body,
                         errMessages: ["Invalid credentials"]
@@ -85,7 +85,7 @@ exports.postLogIn = (req, res) => {
             })
 
         } else {
-            res.status(422).render("login", {
+            res.status(422).render("auth/login", {
                 pageTitle: "Welcome to Hamro Blood Bank",
                 oldValue: body,
                 errMessages: ["Invalid credentials"]

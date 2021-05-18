@@ -38,7 +38,7 @@ justify-content: center;
             border: none;
             border-bottom: 0.15rem solid grey;
             outline:none;
-            &:hover,&:active{
+            &:hover,&:focus{
                 border-color: var(--primary-color);
             }
 

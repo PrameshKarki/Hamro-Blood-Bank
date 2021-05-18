@@ -66,3 +66,10 @@ color:red;
 input.invalid{
     border-color: red !important;
 }
+.no-data-warning{
+    color:red;
+    font-size: var(--large-text);
+    text-align: center;
+    font-family: Poppins-Italic;
+    letter-spacing: 0.2rem;
+}

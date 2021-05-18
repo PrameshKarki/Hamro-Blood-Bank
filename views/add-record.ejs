@@ -22,23 +22,30 @@
                     <input type="file" name="image" id="imagePicker">
                 </div>
                 <div class="form-control">
-                    <input type="text" name="firstName" placeholder="First Name" required>
-                    <input type="text" name="lastName" placeholder="Last Name" required>
+                    <input type="text" name="firstName" placeholder="First Name" value="<%= oldValue.firstName %>"
+                        class="<%= errors.find(i=>i.param==='firstName') ? 'invalid' : ' '%>" required>
+                    <input type="text" name="lastName" placeholder="Last Name" value="<%= oldValue.lastName %>"
+                        class="<%= errors.find(i=>i.param==='lastName') ? 'invalid' : ' '%>" required>
                 </div>
                 <div class="form-control">
-                    <input type="text" name="address" id="address" placeholder="Address" required>
+                    <input type="text" name="address" id="address" placeholder="Address" value="<%= oldValue.address %>"
+                        class="<%= errors.find(i=>i.param==='address') ? 'invalid' : ' '%>" required>
                     <div class="dateOfBirth">
                         <label for="dateOfBirth">Date Of Birth*:</label>
-                        <input type="date" name="dateOfBirth" id="dateOfBirth" required>
+                        <input type="date" name="dateOfBirth" id="dateOfBirth" value="<%= oldValue.dateOfBirth %>"
+                            class="<%= errors.find(i=>i.param==='dateOfBirth') ? 'invalid' : ' '%>" required>
                     </div>
                 </div>
                 <div class="form-control">
-                    <input type="email" name="email" id="email" placeholder="Email">
-                    <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Phone Number">
+                    <input type="email" name="email" id="email" value="<%= oldValue.email %>"
+                        class="<%= errors.find(i=>i.param==='email') ? 'invalid' : ' '%>" placeholder="Email">
+                    <input type="text" name="phoneNumber" id="phoneNumber" value="<%= oldValue.phoneNumber %>"
+                        class="<%= errors.find(i=>i.param==='phoneNumber') ? 'invalid' : ' '%>"
+                        placeholder="Phone Number">
                 </div>
                 <div class="form-control">
                     <label for="bloodGroup">Blood Group*:</label>
-                    <select name="bloodGroup" id="bloodGroup">
+                    <select name="bloodGroup" id="bloodGroup" required>
                         <option value="" selected disabled hidden>Choose Here</option>
                         <option value="A +ve">A +ve</option>
                         <option value="A -ve">A -ve</option>
@@ -50,6 +57,7 @@
                         <option value="O -ve">O -ve</option>
                     </select>
                 </div>
+                <input type="hidden" name="userID" value="<%= user._id%>">
                 <button type="submit" class="btn btn-primary btn-add-record btn-center">Add Record</button>
             </form>
             <img src="images/test.JPG" id="imagePreview" alt="Your image">

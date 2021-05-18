@@ -14,6 +14,7 @@ section.add-record{
         
         .form-control{
             display: flex;
+            flex-wrap: wrap;
             &:nth-child(1){
                 margin-bottom: 1.5rem;
             }
@@ -25,7 +26,7 @@ section.add-record{
             border: none;
             border-bottom: 0.15rem solid grey;
             outline:none;
-            &:hover,&:active{
+            &:hover,&:focus{
                 border-color: var(--primary-color);
             }
 

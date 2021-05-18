@@ -16,10 +16,11 @@
         <main class="details">
             <div class="header">
                 <a class="btn btn-add-record" href="/add-record">Add Record</a>
-                <form action="/search">
-                    <input type="search" name="search" placeholder="Search Here">
-                    <button type="submit" class="btn btn-search">Search</button>
-                </form>
+                <% if( data.length> 0){ %>
+                    <form action="/search">
+                        <input type="search" name="search" placeholder="Search Here">
+                        <button type="submit" class="btn btn-search">Search</button>
+                    </form>
             </div>
             <table>
                 <thead>
@@ -33,49 +34,51 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>112121212</td>
-                        <td>Pramesh Karki</td>
-                        <td>O +ve</td>
-                        <td><a href="mailto:Prameshkarki0407@gmail.com">Prameshkarki0407@gmail.com</a></td>
-                        <td><a href="phoneto:+9779842473580">9842473580</a></td>
-                        <td>Terhathum,Nepal</td>
-                        <td class="buttons-container">
-                            <button class="btn-small">
-                                <a href="/edit" title="Edit"> <img src="images/edit.png" alt="edit"></a>
-                            </button>
-                            <form action="/delete-user">
-                                <button type="submit" class="btn-small" title="Delete">
-                                    <img src="images/delete.png" alt="delete">
+                    <% data.forEach(element=>{ %>
+                        <tr>
+                            <td>
+                                <%= element._id %>
+                            </td>
+                            <td>
+                                <%= element.firstName %>
+                                    <%= element.lastName %>
+                            </td>
+                            <td>
+                                <%= element.bloodGroup %>
+                            </td>
+                            <td><a href="mailto:<%= element.email %>">
+                                    <%= element.email %>
+                                </a></td>
+                            <td><a href="phoneto:<%= element.phoneNumber %>">
+                                    <%= element.phoneNumber %>
+                                </a></td>
+                            <td>
+                                <%= element.address %>
+                            </td>
+                            <td class="buttons-container">
+                                <button class="btn-small">
+                                    <a href="/edit/<%= element._id %>" title="Edit"> <img src="images/edit.png"
+                                            alt="edit"></a>
                                 </button>
+                                <form action="/delete-record">
+                                    <input type="hidden" name="patientID" value="<%= element._id %>">
+                                    <button type="submit" class="btn-small" title="Delete">
+                                        <img src="images/delete.png" alt="delete">
+                                    </button>
 
-                            </form>
+                                </form>
 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>112121212</td>
-                        <td>Pramesh Karki</td>
-                        <td>O +ve</td>
-                        <td><a href="mailto:Prameshkarki0407@gmail.com">Prameshkarki0407@gmail.com</a></td>
-                        <td><a href="phoneto:+9779842473580">9842473580</a></td>
-                        <td>Terhathum,Nepal</td>
-                        <td class="buttons-container">
-                            <button class="btn-small">
-                                <a href="/edit" title="Edit"> <img src="images/edit.png" alt="edit"></a>
-                            </button>
-                            <form action="/delete-user">
-                                <button type="submit" class="btn-small" title="Delete">
-                                    <img src="images/delete.png" alt="delete">
-                                </button>
-
-                            </form>
-
-                        </td>
-                    </tr>
-
+                            </td>
+                        </tr>
+                        <% }) %>
                 </tbody>
             </table>
+            <% }else{ %>
+                <!-- Closed Header  -->
+            </div> 
+                <h1 class="no-data-warning">No Data Found!!!</h1>
+                <% } %>
+
         </main>
 
         <%- include("includes/footer") %>
