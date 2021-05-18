@@ -43,7 +43,7 @@ router.post("/add-record", ensureAuth, [
 
     }),
     body("email", "Invalid email").isEmail().normalizeEmail(),
-    body("phoneNumber", "Invalid phoneNumber").isNumeric().isLength({ min: 10 }).trim(),
+    body("phoneNumber", "Invalid phoneNumber").isNumeric().isLength({min: 10,max:10 }).trim(),
     body("email").custom((value, { req }) => {
         return Patient.findOne({ email: value, phoneNumber: req.body.phoneNumber }).then(user => {
             console.log(user);
@@ -56,7 +56,30 @@ router.post("/add-record", ensureAuth, [
 ], appController.postAddRecord);
 
 //Delete record
-router.post("/delete-record",appController.postDeleteRecord);
+router.post("/delete-record", ensureAuth, appController.postDeleteRecord);
+
+//Get Edit record
+router.get("/edit-record/:patientID", ensureAuth, appController.getEditRecord);
+
+//Post edit product
+router.post("/edit-record", ensureAuth, [
+    body("firstName", "Invalid first name").isAlpha().isLength({ min: 2, max: 20 }).trim(),
+    body("lastName", "Invalid last name").isAlpha().isLength({ min: 2, max: 15 }).trim(),
+    body("address", "Invalid address").isString().isLength({ min: 5, max: 25 }).trim(),
+    body("dateOfBirth").custom(value => {
+        let givenDate = new Date(value);
+        let minDate = new Date("2000-1-1");
+        if (givenDate > minDate && givenDate < Date.now())
+            return true;
+        throw new Error("Invalid date");
+
+    }),
+    body("email", "Invalid email").isEmail().normalizeEmail(),
+    body("phoneNumber", "Invalid phoneNumber").isNumeric().isLength({ min: 10,max:10 }).trim(),
+    body("_id").trim()
+], appController.postEditRecord);
+
+
 
 //Export router
 module.exports = router;

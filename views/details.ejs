@@ -1,62 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= pageTitle %></title>
+    <link rel="stylesheet" href="scss/main.css" />
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        <%= pageTitle %>
-    </title>
-    <link rel="stylesheet" href="scss/main.css">
-</head>
-
-<body>
+  <body>
     <%- include("includes/header") %>
-        <main class="details">
-            <% if( data.length > 0){ %>
-                <form action="/search">
-                    <input type="search" name="search" placeholder="Search Here">
-                    <button type="submit" class="btn btn-search">Search</button>
-                </form>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Blood Group</th>
-                            <th>Email</th>
-                            <th>Contact Number</th>
-                            <th>Address</th>
-                            <th>Added By</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% data.forEach(element=>{ %>
-                            <tr>
-                                <td><%= element._id %></td>
-                                <td><%= element.firstName %> <%= element.lastName %></td>
-                                <td><%= element.bloodGroup %></td>
-                                <td><a href="mailto:<%= element.email %>"><%= element.email %></a></td>
-                                <td><a href="phoneto:<%= element.phoneNumber %>"><%= element.phoneNumber %></a></td>
-                                <td><%= element.address %></td>
-                                <td><%= element.userID.firstName %></td>
-                            </tr>
+    <main class="details">
+      <% if( data.length > 0){ %>
+      <form action="/search">
+        <input type="search" name="search" placeholder="Search Here" />
+        <button type="submit" class="btn btn-search">Search</button>
+      </form>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Blood Group</th>
+            <th>Email</th>
+            <th>Contact Number</th>
+            <th>Address</th>
+            <th>Added By</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% data.forEach(element=>{ %>
+          <tr>
+            <td><%= element._id %></td>
+            <td><%= element.firstName %> <%= element.lastName %></td>
+            <td><%= element.bloodGroup %></td>
+            <td>
+              <a href="mailto:<%= element.email %>"><%= element.email %></a>
+            </td>
+            <td>
+              <a href="phoneto:<%= element.phoneNumber %>"
+                ><%= element.phoneNumber %></a
+              >
+            </td>
+            <td><%= element.address %></td>
+            <td><%= element.userID.firstName %></td>
+          </tr>
 
+          <% }) %>
+        </tbody>
+      </table>
+      <% }else{ %>
+      <h1 class="no-data-warning">No Data Found!!!</h1>
+      <% } %>
+    </main>
 
-                            <% }) %>
-
-
-                    </tbody>
-                </table>
-                <% }else{ %>
-                    <h1>No Data Found!!!</h1>
-                    <% } %>
-        </main>
-
-
-        <%- include("includes/footer") %>
-
-</body>
-
+    <%- include("includes/footer") %>
+  </body>
 </html>

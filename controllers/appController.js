@@ -38,17 +38,11 @@ exports.getManage = (req, res) => {
 }
 
 exports.getAddRecord = (req, res) => {
-    res.render("add-record", {
+    res.render("edit-record", {
         pageTitle: "Add Record-Hamro Blood Bank",
         path: "/manage",
-        oldValue: {
-            firstName: "",
-            lastName: "",
-            address: "",
-            dateOfBirth: "",
-            email: "",
-            phoneNumber: ""
-        },
+        editMode: false,
+        hasError: false,
         errMessage: [],
         errors: [],
         user: req.session.user
@@ -60,10 +54,13 @@ exports.postAddRecord = (req, res) => {
     const body = JSON.parse(JSON.stringify(req.body));
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        res.status(422).render("add-record", {
+        let formattedDate = new Date(body.dateOfBirth).toISOString().split('T')[0];
+        res.status(422).render("edit-record", {
             pageTitle: "Add Record-Hamro Blood Bank",
             path: "/manage",
-            oldValue: body,
+            editMode: false,
+            hasError: true,
+            oldValue: { ...body, formattedDate },
             errMessage: errors.array().map(i => i.msg),
             errors: errors.array(),
             user: req.session.user,
@@ -102,6 +99,82 @@ exports.postDeleteRecord = (req, res) => {
     }).catch(err => {
         console.log(err);
     })
+}
+
+exports.getEditRecord = (req, res) => {
+    let editMode = req.query.edit;
+    if (editMode) {
+        let patientID = req.params.patientID;
+        Patient.findOne({ _id: patientID, userID: req.session.user._id }).then(data => {
+            if (data) {
+                let formattedDate = new Date(data.dateOfBirth).toISOString().split('T')[0];
+                res.render("edit-record", {
+                    pageTitle: "Edit Info-Hamro Blood Bank",
+                    path: "/manage",
+                    editMode: true,
+                    hasError: false,
+                    oldValue: { ...data._doc, formattedDate },
+                    user: req.session.user,
+                    errors: [],
+                    errMessage: []
+                })
+            }
+            else {
+                req.flash("err-message", "You are not authorized!");
+                res.redirect("/manage");
+            }
+        }).catch(err => {
+            console.log(err);
+        })
+
+    } else {
+        res.redirect("/manage");
+    }
+}
+
+exports.postEditRecord = (req, res) => {
+    const body = JSON.parse(JSON.stringify(req.body));
+    let errors = validationResult(req);
+    console.log(errors.array());
+    if (!errors.isEmpty()) {
+        let formattedDate = new Date(body.dateOfBirth).toISOString().split('T')[0];
+        res.status(422).render("edit-record", {
+            pageTitle: "Update Record-Hamro Blood Bank",
+            path: "/manage",
+            editMode: true,
+            hasError: true,
+            oldValue: { ...body, formattedDate },
+            errMessage: errors.array().map(i => i.msg),
+            errors: errors.array(),
+            user: req.session.user,
+        })
+
+    } else {
+        //Update Record
+        Patient.findOne({ _id: body._id }).then(data => {
+            if (data.userID.toString() === req.session.user._id.toString()) {
+                data.firstName = body.firstName;
+                data.lastName = body.lastName;
+                data.address = body.address;
+                data.dateOfBirth = body.dateOfBirth;
+                data.email = body.email;
+                data.phoneNumber = body.phoneNumber;
+                data.bloodGroup = body.bloodGroup;
+                return data.save();
+
+            } else {
+                req.flash("err-message", "You are not authorized");
+                res.redirect("/manage");
+            }
+
+        }).then(() => {
+            res.redirect("/manage");
+        }).catch(err => {
+            console.log(err);
+        })
+
+
+    }
 }
 
 

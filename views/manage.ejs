@@ -36,28 +36,15 @@
                 <tbody>
                     <% data.forEach(element=>{ %>
                         <tr>
-                            <td>
-                                <%= element._id %>
-                            </td>
-                            <td>
-                                <%= element.firstName %>
-                                    <%= element.lastName %>
-                            </td>
-                            <td>
-                                <%= element.bloodGroup %>
-                            </td>
-                            <td><a href="mailto:<%= element.email %>">
-                                    <%= element.email %>
-                                </a></td>
-                            <td><a href="phoneto:<%= element.phoneNumber %>">
-                                    <%= element.phoneNumber %>
-                                </a></td>
-                            <td>
-                                <%= element.address %>
-                            </td>
+                            <td><%= element._id %> </td>
+                            <td><%= element.firstName %> <%= element.lastName %> </td>
+                            <td> <%= element.bloodGroup %> </td>
+                            <td><a href="mailto:<%= element.email %>"><%= element.email %> </a></td>
+                            <td><a href="phoneto:<%= element.phoneNumber %>"> <%= element.phoneNumber %> </a></td>
+                            <td> <%= element.address %> </td>
                             <td class="buttons-container">
                                 <button class="btn-small">
-                                    <a href="/edit/<%= element._id %>" title="Edit"> <img src="images/edit.png"
+                                    <a href="/edit-record/<%= element._id %>?edit=true" title="Edit"> <img src="images/edit.png"
                                             alt="edit"></a>
                                 </button>
                                 <form action="/delete-record" method="POST">
@@ -75,7 +62,7 @@
             </table>
             <% }else{ %>
                 <!-- Closed Header  -->
-            </div> 
+                </div>
                 <h1 class="no-data-warning">No Data Found!!!</h1>
                 <% } %>
 

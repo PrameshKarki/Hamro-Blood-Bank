@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= pageTitle %></title>
+    <link rel="stylesheet" href="/scss/main.css" />
+  </head>
+
+  <body>
+    <%- include("includes/header") %>
+    <section class="add-record">
+      <h2>
+        <% if (editMode) { %> Edit Record: <% } else { %> Add Record: <% } %>
+      </h2>
+      <p>Please enter valid information:</p>
+      <form action=" <% if (editMode) { %> /edit-record <% } else { %> /add-record <% } %>"
+        method="POST"
+        name="edit-record-form"
+       >
+        <div class="form-control">
+          <label for="image">Image:</label>
+          <input type="file" name="image" id="imagePicker" />
+        </div>
+        <div class="form-control">
+          <input
+            type="text"
+            name="firstName"
+            placeholder="First Name"
+            class="<%= errors.find(i=>i.param==='firstName') ? 'invalid' : ' '%>"
+            <% if (editMode || hasError) { %>
+             
+                value="<%= oldValue.firstName %>"
+            <% } %> 
+            required
+          />
+          <input
+            type="text"
+            name="lastName"
+            placeholder="Last Name"
+            <% if (editMode || hasError) { %>
+                value="<%= oldValue.lastName %>"
+            <% } %>
+            class="<%= errors.find(i=>i.param==='lastName') ? 'invalid' : ' '%>"
+            required
+          />
+        </div>
+        <div class="form-control">
+          <input
+            type="text"
+            name="address"
+            id="address"
+            placeholder="Address"
+            <% if (editMode || hasError) { %>
+             
+                value="<%= oldValue.address %>"
+            <% } %>
+            class="<%= errors.find(i=>i.param==='address') ? 'invalid' : ' '%>"
+            required
+          />
+          <div class="dateOfBirth">
+            <label for="dateOfBirth">Date Of Birth*:</label>
+            <input
+              type="date"
+              name="dateOfBirth"
+              id="dateOfBirth"
+              <% if (editMode || hasError) { %>
+                value="<%=oldValue.formattedDate %>"
+               
+              <% } %>
+              class="<%= errors.find(i=>i.param==='dateOfBirth') ? 'invalid' : ' '%>"
+              required
+            />
+          </div>
+        </div>
+        <div class="form-control">
+          <input
+            type="email"
+            name="email"
+            id="email"
+            <% if (editMode || hasError) { %>
+             
+                value="<%= oldValue.email %>"
+            <% } %>
+            class="<%= errors.find(i=>i.param==='email') ? 'invalid' : ' '%>"
+            placeholder="Email"
+          />
+          <input
+            type="text"
+            name="phoneNumber"
+            id="phoneNumber"
+            <% if (editMode || hasError) { %>
+                value="<%= oldValue.phoneNumber %>"
+            <% } %>
+            class="<%= errors.find(i=>i.param==='phoneNumber') ? 'invalid' : ' '%>"
+            placeholder="Phone Number"
+          />
+        </div>
+        <div class="form-control">
+          <label for="bloodGroup">Blood Group*:</label>
+          <select name="bloodGroup" id="bloodGroup" required>
+              <% if (!editMode || !hasError) { %>
+               
+                <option value="" selected disabled hidden>Choose Here</option>
+              <% } %>
+            <option value="A +ve" <% if ((editMode ||hasError) && oldValue.bloodGroup==="A +ve") { %>selected <% } %> >A +ve</option>
+            <option value="A -ve" <% if ((editMode ||hasError) && oldValue.bloodGroup==="A -ve") { %>selected <% } %> >A -ve</option>
+            <option value="B +ve" <% if ((editMode ||hasError) && oldValue.bloodGroup==="B +ve") { %>selected <% } %> >B +ve</option>
+            <option value="B -ve" <% if ((editMode ||hasError) && oldValue.bloodGroup==="B -ve") { %>selected <% } %> >B -ve</option>
+            <option value="AB +ve" <% if ((editMode ||hasError) && oldValue.bloodGroup==="AB +ve") { %>selected <% } %> >AB +ve</option>
+            <option value="AB -ve" <% if ((editMode ||hasError) && oldValue.bloodGroup==="AB -ve") { %>selected <% } %> >AB -ve</option>
+            <option value="O +ve" <% if ((editMode ||hasError) && oldValue.bloodGroup==="O +ve") { %>selected <% } %> >O +ve</option>
+            <option value="O -ve" <% if ((editMode ||hasError) && oldValue.bloodGroup==="O -ve") { %>selected <% } %> >O -ve</option>
+          </select>
+        </div>
+        <% if (editMode) { %>
+         <input type="hidden" name="_id" value="<%= oldValue._id %> ">
+        <% } %>
+        <input type="hidden" name="userID" value="<%= user._id%>" />
+        <button type="submit" class="btn btn-primary btn-add-record btn-center"><% if (editMode || hasError) { %>
+         Update Record
+        <% }else{ %> Add Record <% } %> 
+        </button>
+      </form>
+      <img src="#" id="imagePreview" alt="Your image" />
+    </section>
+    <%- include("includes/footer") %>
+
+    <script>
+      const imagePicker = document.getElementById("imagePicker");
+      const imagePreview = document.getElementById("imagePreview");
+      imagePicker.onchange = (event) => {
+        imagePreview.style.display = "block";
+        const [file] = imagePicker.files;
+        if (file) {
+          imagePreview.src = URL.createObjectURL(file);
+        }
+      };
+
+  </script>
+  </body>
+</html>
