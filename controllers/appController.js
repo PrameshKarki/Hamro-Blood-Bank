@@ -56,7 +56,7 @@ exports.getDetails = (req, res) => {
                 pageTitle: "Details-Hamro Blood Bank",
                 path: "/details",
                 data: data,
-                hasSearched:false
+                hasSearched: false
             })
 
         }).catch(err => {
@@ -65,16 +65,32 @@ exports.getDetails = (req, res) => {
 }
 
 exports.getManage = (req, res) => {
-    Patient.find({ userID: req.session.user._id }).then(data => {
-        res.render("manage", {
-            pageTitle: "Manage-Hamro Blood Bank",
-            path: "/manage",
-            data: data,
-            hasSearched:false
+    const role = req.session.user.role;
+    if (role === "Admin") {
+        Patient.find().then(data => {
+            res.render("manage", {
+                pageTitle: "Manage-Hamro Blood Bank",
+                path: "/manage",
+                data: data,
+                hasSearched: false
+            })
+        }).catch(err => {
+            console.log(err);
         })
-    }).catch(err => {
-        console.log(err);
-    })
+    } else {
+        Patient.find({ userID: req.session.user._id }).then(data => {
+            res.render("manage", {
+                pageTitle: "Manage-Hamro Blood Bank",
+                path: "/manage",
+                data: data,
+                hasSearched: false
+            })
+        }).catch(err => {
+            console.log(err);
+        })
+
+    }
+
 }
 
 exports.getAddRecord = (req, res) => {
@@ -228,7 +244,7 @@ exports.getSearch = (req, res) => {
                     pageTitle: "Details-Hamro Blood Bank",
                     path: "/details",
                     data: data,
-                    hasSearched:true,
+                    hasSearched: true,
                     searchString: searchString
 
                 })
@@ -248,7 +264,7 @@ exports.getSearch = (req, res) => {
                     pageTitle: "Manage-Hamro Blood Bank",
                     path: "/manage",
                     data: data,
-                    hasSearched:true,
+                    hasSearched: true,
                     searchString: searchString
                 })
             }).catch(err => {

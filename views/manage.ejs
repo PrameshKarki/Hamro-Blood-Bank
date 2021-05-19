@@ -46,13 +46,13 @@
                             <td> <%= element.address %> </td>
                             <td class="buttons-container">
                                 <button class="btn-small">
-                                    <a href="/edit-record/<%= element._id %>?edit=true" title="Edit"> <img src="images/edit.png"
+                                    <a href="/edit-record/<%= element._id %>?edit=true" title="Edit"> <img src="/images/edit.png"
                                             alt="edit"></a>
                                 </button>
                                 <form action="/delete-record" method="POST">
                                     <input type="hidden" name="patientID" value="<%= element._id %>">
                                     <button type="submit" class="btn-small" title="Delete">
-                                        <img src="images/delete.png" alt="delete">
+                                        <img src="/images/delete.png" alt="delete">
                                     </button>
 
                                 </form>

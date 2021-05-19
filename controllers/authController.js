@@ -48,7 +48,7 @@ exports.postSignUp = (req, res) => {
         //Encrypt password to store in database
         //12:=> Salt value
         bcrypt.hash(body.password, 12).then(hashedPassword => {
-            const user = new User({ firstName: body.firstName, lastName: body.lastName, phoneNumber: body.phoneNumber, email: body.email, password: hashedPassword });
+            const user = new User({ firstName: body.firstName, lastName: body.lastName,role:"User",phoneNumber: body.phoneNumber, email: body.email, password: hashedPassword });
             return user.save();
         }).then(() => {
             res.redirect("/login");
