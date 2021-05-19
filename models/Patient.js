@@ -3,6 +3,10 @@ const mongoose = require("mongoose");
 
 //Define Schema
 const patientSchema = mongoose.Schema({
+    ID:{
+        type:String,
+        required:true
+    },
     firstName: {
         type: String,
         required: true
@@ -28,6 +32,10 @@ const patientSchema = mongoose.Schema({
         required: true
     },
     bloodGroup: {
+        type: String,
+        required: true
+    },
+    gender: {
         type: String,
         required: true
     },

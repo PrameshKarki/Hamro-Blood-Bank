@@ -27,6 +27,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
+                        <th>Gender</th>
                         <th>Blood Group</th>
                         <th>Email</th>
                         <th>Contact Number</th>
@@ -36,8 +37,9 @@
                 <tbody>
                     <% data.forEach(element=>{ %>
                         <tr>
-                            <td><%= element._id %> </td>
+                            <td><%= element.ID %> </td>
                             <td><%= element.firstName %> <%= element.lastName %> </td>
+                            <td> <%= element.gender %> </td>
                             <td> <%= element.bloodGroup %> </td>
                             <td><a href="mailto:<%= element.email %>"><%= element.email %> </a></td>
                             <td><a href="phoneto:<%= element.phoneNumber %>"> <%= element.phoneNumber %> </a></td>

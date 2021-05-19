@@ -18,6 +18,7 @@ section.add-record{
             &:nth-child(1){
                 margin-bottom: 1.5rem;
             }
+            
         }
         input[type="text"],input[type="email"],input[type="password"]{
             height:4rem;
@@ -44,6 +45,16 @@ section.add-record{
         option,select{
             font-size:var(--small-text);
 
+        }
+        .gender-radio{
+            display: flex;
+            align-items: center;
+            margin-left: 2rem;
+        }
+        input[type="radio"]{
+            width: 1.5rem;
+            height: 1.5rem;
+            margin:0 1rem;
         }
     }
     img{

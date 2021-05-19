@@ -4,11 +4,49 @@ const { validationResult } = require("express-validator/check");
 //Import Models
 const Patient = require("../models/Patient");
 
+//Import modules
+const shortID = require("shortid");
+
 exports.getIndex = (req, res) => {
-    res.render("index", {
-        pageTitle: "Home-Hamro Blood Bank",
-        path: "/"
-    })
+    let counts = {
+        totalPatients: 0,
+        totalMalePatients: 0,
+        totalFemalePatients: 0,
+        totalAPositivePatients: 0,
+        totalANegativePatients: 0,
+        totalBPositivePatients: 0,
+        totalBNegativePatients: 0,
+        totalABPositivePatients: 0,
+        totalABNegativePatients: 0,
+        totalOPositivePatients: 0,
+        totalONegativePatients: 0,
+    };
+    let totalPatients = Patient.countDocuments().exec();
+    let totalMalePatients = Patient.countDocuments({ gender: "Male" }).exec();
+    let totalFemalePatients = Patient.countDocuments({ gender: "Female" }).exec();
+    let totalAPositivePatients = Patient.countDocuments({ bloodGroup: "A +ve" }).exec();
+    let totalANegativePatients = Patient.countDocuments({ bloodGroup: "A -ve" }).exec();
+    let totalBPositivePatients = Patient.countDocuments({ bloodGroup: "B +ve" }).exec();
+    let totalBNegativePatients = Patient.countDocuments({ bloodGroup: "B -ve" }).exec();
+    let totalABPositivePatients = Patient.countDocuments({ bloodGroup: "AB +ve" }).exec();
+    let totalABNegativePatients = Patient.countDocuments({ bloodGroup: "AB -ve" }).exec();
+    let totalOPositivePatients = Patient.countDocuments({ bloodGroup: "O +ve" }).exec();
+    let totalONegativePatients = Patient.countDocuments({ bloodGroup: "O -ve" }).exec();
+
+    Promise.all([totalPatients, totalMalePatients, totalFemalePatients, totalAPositivePatients,
+        totalANegativePatients, totalBPositivePatients, totalBNegativePatients, totalABPositivePatients,
+        totalABNegativePatients, totalOPositivePatients, totalONegativePatients]).then(data => {
+
+            Object.keys(counts).forEach((key, index) => {
+                counts[key] = data[index];
+            })
+            res.render("index", {
+                pageTitle: "Home-Hamro Blood Bank",
+                path: "/",
+                counts: counts
+            })
+        })
+
 }
 
 exports.getDetails = (req, res) => {
@@ -52,6 +90,7 @@ exports.getAddRecord = (req, res) => {
 
 exports.postAddRecord = (req, res) => {
     const body = JSON.parse(JSON.stringify(req.body));
+    console.log(body);
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         let formattedDate = new Date(body.dateOfBirth).toISOString().split('T')[0];
@@ -70,13 +109,15 @@ exports.postAddRecord = (req, res) => {
         //TO DO
         let imageURL = "";
         const patient = new Patient({
-            image: imageURL,
+            ID: shortID.generate(),
             firstName: body.firstName,
             lastName: body.lastName,
+            image: imageURL,
             address: body.address,
             dateOfBirth: body.dateOfBirth,
             email: body.email,
             phoneNumber: body.phoneNumber,
+            gender: body.gender,
             bloodGroup: body.bloodGroup,
             userID: body.userID
         })
