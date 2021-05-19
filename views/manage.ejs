@@ -12,14 +12,20 @@
 </head>
 
 <body>
+    <div class="banner-for-mobile">
+        <h1>Sorry!!!</h1>
+        <p>This site is not available for mobile/tab or devices with smaller screen(i.e 1050px)</p>
+        <h3>Note:Please visit from PC/Laptop</h3>
+    </div>
     <%- include("includes/header") %>
         <main class="details">
             <div class="header">
                 <a class="btn btn-add-record" href="/add-record">Add Record</a>
                 <% if( data.length> 0){ %>
                     <form action="/search/2" method>
-                        <input type="search" name="firstName" placeholder="First Name" <% if (hasSearched) { %> value="<%= searchString %> " <% } %>>
-                        <button type="submit" class="btn btn-search">Search</button>
+                        <input type="search" name="firstName" placeholder="First Name" <% if (hasSearched) { %> value="
+                        <%= searchString %> " <% } %>>
+                                <button type="submit" class="btn btn-search">Search</button>
                     </form>
             </div>
             <table>
@@ -37,17 +43,32 @@
                 <tbody>
                     <% data.forEach(element=>{ %>
                         <tr>
-                            <td><%= element.ID %> </td>
-                            <td><%= element.firstName %> <%= element.lastName %> </td>
-                            <td> <%= element.gender %> </td>
-                            <td> <%= element.bloodGroup %> </td>
-                            <td><a href="mailto:<%= element.email %>"><%= element.email %> </a></td>
-                            <td><a href="phoneto:<%= element.phoneNumber %>"> <%= element.phoneNumber %> </a></td>
-                            <td> <%= element.address %> </td>
+                            <td>
+                                <%= element.ID %>
+                            </td>
+                            <td>
+                                <%= element.firstName %>
+                                    <%= element.lastName %>
+                            </td>
+                            <td>
+                                <%= element.gender %>
+                            </td>
+                            <td>
+                                <%= element.bloodGroup %>
+                            </td>
+                            <td><a href="mailto:<%= element.email %>">
+                                    <%= element.email %>
+                                </a></td>
+                            <td><a href="phoneto:<%= element.phoneNumber %>">
+                                    <%= element.phoneNumber %>
+                                </a></td>
+                            <td>
+                                <%= element.address %>
+                            </td>
                             <td class="buttons-container">
                                 <button class="btn-small">
-                                    <a href="/edit-record/<%= element._id %>?edit=true" title="Edit"> <img src="/images/edit.png"
-                                            alt="edit"></a>
+                                    <a href="/edit-record/<%= element._id %>?edit=true" title="Edit"> <img
+                                            src="/images/edit.png" alt="edit"></a>
                                 </button>
                                 <form action="/delete-record" method="POST">
                                     <input type="hidden" name="_csrf" value="<%= csrfToken %>">
