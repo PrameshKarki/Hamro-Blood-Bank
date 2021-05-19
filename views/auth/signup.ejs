@@ -39,6 +39,22 @@
                 <p>Do you have an account? <a href="/login">Log In</a></p>
             </div>
         </div>
+    </div>
+    <% if(errMessage.length>0){ %>
+        <div class="bottom-alert-container">
+            <% errMessage.forEach(element=>{ %>
+                <div class="alert">
+                    <p class="message">
+                        <%= element %>
+                    </p>
+                    <button class="close-btn" onclick="this.parentNode.style.display='none'">
+                        X
+                    </button>
+                </div>
+
+                <%})%>
+        </div>
+        <% } %>
 </body>
 
 </html>

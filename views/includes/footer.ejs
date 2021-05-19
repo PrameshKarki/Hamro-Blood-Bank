@@ -1,4 +1,19 @@
 <footer>
+    <% if(errMessage.length>0){ %>
+        <div class="alert-container">
+            <% errMessage.forEach(element=>{ %>
+                <div class="alert">
+                    <p class="message">
+                        <%= element %>
+                    </p>
+                    <button class="close-btn" onclick="this.parentNode.style.display='none'">
+                        X
+                    </button>
+                </div>
+
+                <%})%>
+        </div>
+        <% } %>
     <!-- our Details -->
     <div class="our-details">
         <p>Hamro Blood Bank</p>

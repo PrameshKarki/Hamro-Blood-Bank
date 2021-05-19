@@ -43,7 +43,8 @@ exports.getIndex = (req, res) => {
             res.render("index", {
                 pageTitle: "Home-Hamro Blood Bank",
                 path: "/",
-                counts: counts
+                counts: counts,
+                errMessage: req.flash("err-message"),
             })
         })
 
@@ -56,7 +57,8 @@ exports.getDetails = (req, res) => {
                 pageTitle: "Details-Hamro Blood Bank",
                 path: "/details",
                 data: data,
-                hasSearched: false
+                hasSearched: false,
+                errMessage: req.flash("err-message"),
             })
 
         }).catch(err => {
@@ -72,7 +74,8 @@ exports.getManage = (req, res) => {
                 pageTitle: "Manage-Hamro Blood Bank",
                 path: "/manage",
                 data: data,
-                hasSearched: false
+                hasSearched: false,
+                errMessage: req.flash("err-message"),
             })
         }).catch(err => {
             console.log(err);
@@ -83,7 +86,8 @@ exports.getManage = (req, res) => {
                 pageTitle: "Manage-Hamro Blood Bank",
                 path: "/manage",
                 data: data,
-                hasSearched: false
+                hasSearched: false,
+                errMessage: req.flash("err-message"),
             })
         }).catch(err => {
             console.log(err);
@@ -245,7 +249,8 @@ exports.getSearch = (req, res) => {
                     path: "/details",
                     data: data,
                     hasSearched: true,
-                    searchString: searchString
+                    searchString: searchString,
+                    errMessage: req.flash("err-message"),
 
                 })
 
@@ -265,7 +270,8 @@ exports.getSearch = (req, res) => {
                     path: "/manage",
                     data: data,
                     hasSearched: true,
-                    searchString: searchString
+                    searchString: searchString,
+                    errMessage: req.flash("err-message"),
                 })
             }).catch(err => {
                 console.log(err);

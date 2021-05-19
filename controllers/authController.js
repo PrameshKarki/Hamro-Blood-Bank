@@ -8,7 +8,7 @@ const User = require("../models/User");
 exports.getLogIn = (req, res) => {
     res.render("auth/login", {
         pageTitle: "Welcome to Hamro Blood Bank",
-        errMessages: [],
+        errMessage: [],
         oldValue: {
             email: "",
             password: ""
@@ -27,7 +27,7 @@ exports.getSignUp = (req, res) => {
             password: "",
             confirmPassword: ""
         },
-        errorMessages: [],
+        errMessage: [],
         errors: []
     })
 }
@@ -39,7 +39,7 @@ exports.postSignUp = (req, res) => {
     if (!errors.isEmpty()) {
         return res.status(422).render("auth/signup", {
             pageTitle: "Sign Up-Hamro Blood Bank",
-            errorMessages: errors.array().map(i => i.msg),
+            errMessage: errors.array().map(i => i.msg),
             errors: errors.array(),
             oldValue: body
 
@@ -77,7 +77,7 @@ exports.postLogIn = (req, res) => {
                     res.status(422).render("auth/login", {
                         pageTitle: "Welcome to Hamro Blood Bank",
                         oldValue: body,
-                        errMessages: ["Invalid credentials"]
+                        errMessage: ["Invalid credentials"]
                     })
                 }
             }).catch(err => {
@@ -88,7 +88,7 @@ exports.postLogIn = (req, res) => {
             res.status(422).render("auth/login", {
                 pageTitle: "Welcome to Hamro Blood Bank",
                 oldValue: body,
-                errMessages: ["Invalid credentials"]
+                errMessage: ["Invalid credentials"]
             })
 
         }
