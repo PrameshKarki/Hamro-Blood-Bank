@@ -43,6 +43,9 @@ footer {
     color: white;
     font-size: var(--small-text);
     text-decoration: none;
+    &:hover{
+      color:red;
+    }
 
   }
   

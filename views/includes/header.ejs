@@ -6,6 +6,7 @@
             <li><a class="<% if(path==='/manage') { %>active <% }else{ %> ' ' <%}%>" href="/manage">Manage</a></li>
         </ul>
         <form action="/logout" method="POST">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
             <button type="submit" class="btn btn-logout">Log Out</button>
         </form>
     </nav>

@@ -136,6 +136,7 @@
               </div>
             </div>
 
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
         <% if (editMode) { %>
          <input type="hidden" name="_id" value="<%= oldValue._id %> ">
         <% } %>

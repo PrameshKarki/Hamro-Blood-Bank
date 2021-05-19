@@ -24,6 +24,7 @@
                 <form action="/login" method="POST" name="login-form">
                     <input type="email" name="email" placeholder="Email" value="<%= oldValue.email %>" required>
                     <input type="password" name="password" id="password" placeholder="Password" value="<%= oldValue.password %>" required>
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                     <button type="submit" class="btn btn-login btn-center">Log In</button>
                 </form>
             </div>

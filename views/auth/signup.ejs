@@ -31,7 +31,8 @@
                     <input type="password" name="password" id="password" placeholder="Password" value="<%=oldValue.password %>" class="<%= errors.find(i=>i.param==='password') ? 'invalid' : ' '%>" required>
                     <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" value="<%=oldValue.confirmPassword %>" class="<%= errors.find(i=>i.param==='confirmPassword') ? 'invalid' : ' '%>"
                         required>
-                    <button type="submit" class="btn btn-signup btn-center">Sign Up</button>
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <button type="submit" class="btn btn-signup btn-center">Sign Up</button>
                 </form>
             </div>
             <div class="signup-footer">

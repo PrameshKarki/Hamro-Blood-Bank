@@ -8,6 +8,9 @@ const bodyParser = require("body-parser");
 const flash = require("connect-flash");
 const session = require("express-session")
 const mongoDBStore = require("connect-mongodb-session")(session);
+const csrf = require("csurf");
+//Instantiate csurf
+const csrfProtection = csrf();
 
 
 //Import routes
@@ -41,14 +44,24 @@ app.use(session({
     store: store
 }))
 
-//Set Flash
-app.use(flash());
-
 //Set static folder
 app.use(express.static(path.join(__dirname, "public")));
 
+
 //Set Body Parser
 app.use(bodyParser.urlencoded({ extended: false }));
+
+//Set CSRF Protection
+app.use(csrfProtection);
+
+//Set Flash
+app.use(flash());
+
+//Set Locals
+app.use((req, res, next) => {
+    res.locals.csrfToken = req.csrfToken();
+    next();
+})
 
 //Use routes
 app.use(appRoutes);
@@ -70,7 +83,8 @@ app.use(errorController.get404);
 
 mongoose.connect(MONGODB_URI, {
     useUnifiedTopology: true,
-    useCreateIndex: true
+    useCreateIndex: true,
+    useNewUrlParser:true
 }).then(() => {
     //Run server
     app.listen(process.env.PORT || 3000);

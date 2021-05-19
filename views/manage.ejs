@@ -50,6 +50,7 @@
                                             alt="edit"></a>
                                 </button>
                                 <form action="/delete-record" method="POST">
+                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                     <input type="hidden" name="patientID" value="<%= element._id %>">
                                     <button type="submit" class="btn-small" title="Delete">
                                         <img src="/images/delete.png" alt="delete">

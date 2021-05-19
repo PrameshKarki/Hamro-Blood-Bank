@@ -467,6 +467,10 @@ header nav ul li a {
   font-size: var(--medium-text);
 }
 
+header nav ul li a.active {
+  color: red;
+}
+
 header nav ul li:nth-child(1) a {
   font-size: 3rem;
   font-family: Poppins-Bold;
@@ -517,6 +521,10 @@ footer {
   color: white;
   font-size: var(--small-text);
   text-decoration: none;
+}
+
+.links a:hover {
+  color: red;
 }
 
 .social-medias ul {
@@ -615,10 +623,6 @@ body {
 
 .btn-center {
   margin: 3rem auto 0 auto;
-}
-
-.active {
-  color: red;
 }
 
 input.invalid {

@@ -20,6 +20,9 @@ header{
                 color:white;
                 text-decoration: none;
                 font-size: var(--medium-text);
+                &.active{
+                    color:red;
+                }
             }
             &:nth-child(1) a{
                 font-size: 3rem;
