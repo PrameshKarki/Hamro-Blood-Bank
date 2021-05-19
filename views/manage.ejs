@@ -8,7 +8,7 @@
     <title>
         <%= pageTitle %>
     </title>
-    <link rel="stylesheet" href="scss/main.css">
+    <link rel="stylesheet" href="/scss/main.css">
 </head>
 
 <body>
@@ -17,8 +17,8 @@
             <div class="header">
                 <a class="btn btn-add-record" href="/add-record">Add Record</a>
                 <% if( data.length> 0){ %>
-                    <form action="/search">
-                        <input type="search" name="search" placeholder="Search Here">
+                    <form action="/search/2" method>
+                        <input type="search" name="firstName" placeholder="First Name" <% if (hasSearched) { %> value="<%= searchString %> " <% } %>>
                         <button type="submit" class="btn btn-search">Search</button>
                     </form>
             </div>

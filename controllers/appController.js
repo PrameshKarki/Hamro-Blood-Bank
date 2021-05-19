@@ -55,7 +55,8 @@ exports.getDetails = (req, res) => {
             res.render("details", {
                 pageTitle: "Details-Hamro Blood Bank",
                 path: "/details",
-                data: data
+                data: data,
+                hasSearched:false
             })
 
         }).catch(err => {
@@ -68,7 +69,8 @@ exports.getManage = (req, res) => {
         res.render("manage", {
             pageTitle: "Manage-Hamro Blood Bank",
             path: "/manage",
-            data: data
+            data: data,
+            hasSearched:false
         })
     }).catch(err => {
         console.log(err);
@@ -90,7 +92,6 @@ exports.getAddRecord = (req, res) => {
 
 exports.postAddRecord = (req, res) => {
     const body = JSON.parse(JSON.stringify(req.body));
-    console.log(body);
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         let formattedDate = new Date(body.dateOfBirth).toISOString().split('T')[0];
@@ -176,7 +177,6 @@ exports.getEditRecord = (req, res) => {
 exports.postEditRecord = (req, res) => {
     const body = JSON.parse(JSON.stringify(req.body));
     let errors = validationResult(req);
-    console.log(errors.array());
     if (!errors.isEmpty()) {
         let formattedDate = new Date(body.dateOfBirth).toISOString().split('T')[0];
         res.status(422).render("edit-record", {
@@ -215,6 +215,52 @@ exports.postEditRecord = (req, res) => {
         })
 
 
+    }
+}
+
+exports.getSearch = (req, res) => {
+    let searchString = req.query.firstName;
+    let page = +req.params.page;
+    if (page === 1) {
+        if (searchString) {
+            Patient.find({ firstName: { $regex: new RegExp(searchString, "i") } }).populate("userID", "firstName").then(data => {
+                res.render("details", {
+                    pageTitle: "Details-Hamro Blood Bank",
+                    path: "/details",
+                    data: data,
+                    hasSearched:true,
+                    searchString: searchString
+
+                })
+
+            }).catch(err => {
+                console.log(err);
+            })
+        } else {
+            req.flash("err-message", "Invalid search!");
+            res.redirect("/details");
+
+        }
+    } else if (page === 2) {
+        if (searchString) {
+            Patient.find({ userID: req.session.user._id, firstName: { $regex: new RegExp(searchString, 'i') } }).then(data => {
+                res.render("manage", {
+                    pageTitle: "Manage-Hamro Blood Bank",
+                    path: "/manage",
+                    data: data,
+                    hasSearched:true,
+                    searchString: searchString
+                })
+            }).catch(err => {
+                console.log(err);
+            })
+        } else {
+            req.flash("err-message", "Invalid search!");
+            res.redirect("/manage");
+        }
+
+    } else {
+        res.redirect("/");
     }
 }
 

@@ -79,7 +79,7 @@ router.post("/edit-record", ensureAuth, [
     body("_id").trim()
 ], appController.postEditRecord);
 
-
+router.get("/search/:page",appController.getSearch);
 
 //Export router
 module.exports = router;
