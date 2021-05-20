@@ -116,6 +116,7 @@ input.invalid{
       text-align: center;
       color:white;
       padding:2rem 0;
+      z-index: 9;
       h1{
           margin-top: 5rem;
           font-size: 4rem;
@@ -129,10 +130,11 @@ input.invalid{
   }
 
   @media only screen and (max-width:1050px){
-      body{
-          height: 100vh;
-          overflow: hidden;
-      }
+    html{
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+    }
       .banner-for-mobile{
           display: block;
       }

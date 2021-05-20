@@ -113,6 +113,7 @@ exports.getAddRecord = (req, res) => {
 exports.postAddRecord = (req, res) => {
     const body = JSON.parse(JSON.stringify(req.body));
     const errors = validationResult(req);
+    const image=req.file;
     if (!errors.isEmpty()) {
         let formattedDate = new Date(body.dateOfBirth).toISOString().split('T')[0];
         res.status(422).render("edit-record", {
@@ -129,11 +130,14 @@ exports.postAddRecord = (req, res) => {
     } else {
         //TO DO
         let imageURL = "";
+        if(image){
+            imageURL=image.path;
+        }
         const patient = new Patient({
             ID: shortID.generate(),
             firstName: body.firstName,
             lastName: body.lastName,
-            image: imageURL,
+            imageURL: imageURL,
             address: body.address,
             dateOfBirth: body.dateOfBirth,
             email: body.email,
@@ -197,6 +201,7 @@ exports.getEditRecord = (req, res) => {
 exports.postEditRecord = (req, res) => {
     const body = JSON.parse(JSON.stringify(req.body));
     let errors = validationResult(req);
+    let image=req.file;
     if (!errors.isEmpty()) {
         let formattedDate = new Date(body.dateOfBirth).toISOString().split('T')[0];
         res.status(422).render("edit-record", {
@@ -211,11 +216,16 @@ exports.postEditRecord = (req, res) => {
         })
 
     } else {
+        let imageURL="";
+        if(image){
+            imageURL=image.path;
+        }
         //Update Record
         Patient.findOne({ _id: body._id }).then(data => {
             if (data.userID.toString() === req.session.user._id.toString()) {
                 data.firstName = body.firstName;
                 data.lastName = body.lastName;
+                data.imageURL=imageURL;
                 data.address = body.address;
                 data.dateOfBirth = body.dateOfBirth;
                 data.email = body.email;

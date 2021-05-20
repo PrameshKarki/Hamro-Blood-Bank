@@ -23,9 +23,10 @@
       <form action=" <% if (editMode) { %> /edit-record <% } else { %> /add-record <% } %>"
         method="POST"
         name="edit-record-form"
+        enctype="multipart/form-data"
        >
         <div class="form-control">
-          <label for="image">Image:</label>
+          <label for="imagePicker">Image:</label>
           <input type="file" name="image" id="imagePicker" />
         </div>
         <div class="form-control">
@@ -136,7 +137,7 @@
                      checked
                     <% } %>
                  
-                <% } %>> >
+                <% } %>>
                 <label for="female">Female</label>
               </div>
             </div>
@@ -151,7 +152,11 @@
         <% }else{ %> Add Record <% } %> 
         </button>
       </form>
-      <img src="#" id="imagePreview" alt="Your image" />
+      <img 
+      <% if ((hasError || editMode) && oldValue.imageURL) { %>
+       src="/<%= oldValue.imageURL %>" style="display:block;"
+      <% } %>
+      src="#" id="imagePreview" alt="Your image" />
     </section>
     <%- include("includes/footer") %>
 

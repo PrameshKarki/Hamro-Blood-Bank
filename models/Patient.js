@@ -14,6 +14,8 @@ const patientSchema = mongoose.Schema({
     lastName: {
         type: String,
         required: true
+    },imageURL:{
+        type:String
     },
     address: {
         type: String,

@@ -692,6 +692,7 @@ input.invalid {
   text-align: center;
   color: white;
   padding: 2rem 0;
+  z-index: 9;
 }
 
 .banner-for-mobile h1 {
@@ -709,7 +710,8 @@ input.invalid {
 }
 
 @media only screen and (max-width: 1050px) {
-  body {
+  html {
+    width: 100vw;
     height: 100vh;
     overflow: hidden;
   }
