@@ -2,6 +2,7 @@
 const path = require("path");
 
 const express = require("express");
+const dotenv=require("dotenv");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -10,6 +11,9 @@ const session = require("express-session")
 const mongoDBStore = require("connect-mongodb-session")(session);
 const csrf = require("csurf");
 const multer=require("multer");
+
+//Load CONFIG
+dotenv.config({path:"./config/config.env"});
 
 //Configuring multer to adjust filename and filepath
 const fileStorage = multer.diskStorage({
@@ -41,9 +45,6 @@ const appRoutes = require("./routes/indexRoutes");
 const errorController = require("./controllers/errController");
 const shortid = require("shortid");
 
-//Configuration Constants
-const MONGODB_URI = "mongodb://localhost:27017/HamroBloodBank";
-
 //Instantiate express app
 const app = express();
 
@@ -53,7 +54,7 @@ app.set("views", "views");
 
 //Configuration of store
 const store = new mongoDBStore({
-    uri: MONGODB_URI,
+    uri:process.env.MONGODB_URI,
     collections: "sessions"
 })
 
@@ -106,13 +107,13 @@ app.use((err, req, res, next) => {
     })
 })
 
-mongoose.connect(MONGODB_URI, {
+mongoose.connect(process.env.MONGODB_URI, {
     useUnifiedTopology: true,
     useCreateIndex: true,
     useNewUrlParser:true
 }).then(() => {
     //Run server
-    app.listen(process.env.PORT || 3000);
+    app.listen(process.env.PORT || 5000);
 
 }).catch(err => {
     console.log(err);
