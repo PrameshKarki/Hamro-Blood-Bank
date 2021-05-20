@@ -65,7 +65,10 @@ exports.getDetails = (req, res) => {
             })
 
         }).catch(err => {
-            console.log(err);
+            let error = new Error(err);
+            error.httpStatusCode = 500;
+            return next(error);
+    
         })
 }
 
@@ -81,7 +84,10 @@ exports.getManage = (req, res) => {
                 errMessage: req.flash("err-message"),
             })
         }).catch(err => {
-            console.log(err);
+            let error = new Error(err);
+            error.httpStatusCode = 500;
+            return next(error);
+    
         })
     } else {
         Patient.find({ userID: req.session.user._id }).then(data => {
@@ -93,7 +99,10 @@ exports.getManage = (req, res) => {
                 errMessage: req.flash("err-message"),
             })
         }).catch(err => {
-            console.log(err);
+            let error = new Error(err);
+            error.httpStatusCode = 500;
+            return next(error);
+    
         })
 
     }
@@ -153,7 +162,10 @@ exports.postAddRecord = (req, res) => {
             res.redirect("/manage");
 
         }).catch(err => {
-            console.log(err);
+            let error = new Error(err);
+            error.httpStatusCode = 500;
+            return next(error);
+    
         });
 
 
@@ -171,7 +183,10 @@ exports.postDeleteRecord = (req, res) => {
             res.redirect("/image");
         }
     }).catch(err=>{
-        console.log(err);
+        let error = new Error(err);
+        error.httpStatusCode = 500;
+        return next(error);
+
     })
     Patient.deleteOne({ _id: body.patientID }).then(() => {
         if(imageURL){
@@ -180,7 +195,10 @@ exports.postDeleteRecord = (req, res) => {
         res.redirect("/manage");
 
     }).catch(err => {
-        console.log(err);
+        let error = new Error(err);
+        error.httpStatusCode = 500;
+        return next(error);
+
     })
 }
 
@@ -207,7 +225,10 @@ exports.getEditRecord = (req, res) => {
                 res.redirect("/manage");
             }
         }).catch(err => {
-            console.log(err);
+            let error = new Error(err);
+            error.httpStatusCode = 500;
+            return next(error);
+    
         })
 
     } else {
@@ -261,7 +282,10 @@ exports.postEditRecord = (req, res) => {
         }).then(() => {
             res.redirect("/manage");
         }).catch(err => {
-            console.log(err);
+            let error = new Error(err);
+            error.httpStatusCode = 500;
+            return next(error);
+    
         })
 
 
@@ -285,7 +309,10 @@ exports.getSearch = (req, res) => {
                 })
 
             }).catch(err => {
-                console.log(err);
+                let error = new Error(err);
+                error.httpStatusCode = 500;
+                return next(error);
+        
             })
         } else {
             req.flash("err-message", "Invalid search!");
@@ -304,7 +331,10 @@ exports.getSearch = (req, res) => {
                     errMessage: req.flash("err-message"),
                 })
             }).catch(err => {
-                console.log(err);
+                let error = new Error(err);
+                error.httpStatusCode = 500;
+                return next(error);
+        
             })
         } else {
             req.flash("err-message", "Invalid search!");

@@ -53,7 +53,10 @@ exports.postSignUp = (req, res) => {
         }).then(() => {
             res.redirect("/login");
         }).catch(err => {
-            console.log(err);
+            let error = new Error(err);
+            error.httpStatusCode = 500;
+            return next(error);
+    
         })
 
 
@@ -81,7 +84,10 @@ exports.postLogIn = (req, res) => {
                     })
                 }
             }).catch(err => {
-                console.log(err);
+                let error = new Error(err);
+                error.httpStatusCode = 500;
+                return next(error);
+        
             })
 
         } else {
@@ -93,10 +99,9 @@ exports.postLogIn = (req, res) => {
 
         }
     }).catch(err => {
-        console.log(err);
-        // let error = new Error(err);
-        // error.httpStatusCode = 500;
-        // return next(error);
+        let error = new Error(err);
+        error.httpStatusCode = 500;
+        return next(error);
     })
 
 }

@@ -8,7 +8,7 @@
     <title>
         <%= pageTitle %>
     </title>
-    <link rel="stylesheet" href="scss/main.css">
+    <link rel="stylesheet" href="/scss/main.css">
 
 </head>
 
@@ -19,7 +19,12 @@
         <h3>Note:Please visit from PC/Laptop or browser on full screen mode.</h3>
     </div>
     <%- include("../includes/header") %>
-        <h1>500 Error!</h1>
+        <div class="error">
+            <h1>500</h1>
+            <p class="error-detail">Server Error</p>
+            <p>We're working on fixing this,Sorry for inconvenience!!!</p>
+
+        </div>
         <%- include("../includes/footer") %>
 
 </body>

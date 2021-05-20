@@ -94,16 +94,17 @@ app.use(authRoutes);
 //404 Error Handler
 app.use(errorController.get404);
 
-//Express default error handler
-// app.use((err, req, res, next) => {
-//     let statusCode;
-//     if (!err.httpStatusCode)
-//         statusCode = 500;
-//     res.status(statusCode).render("errors/500", {
-//         pageTitle: "Error 500",
-//         path: "/505"
-//     })
-// })
+// Express default error handler
+app.use((err, req, res, next) => {
+    let statusCode;
+    if (!err.httpStatusCode)
+        statusCode = 500;
+    res.status(statusCode).render("errors/500", {
+        pageTitle: "Server Error-Hamro Blood Bank",
+        path: "/500",
+        errMessage:[]
+    })
+})
 
 mongoose.connect(MONGODB_URI, {
     useUnifiedTopology: true,
