@@ -7,6 +7,9 @@ const Patient = require("../models/Patient");
 //Import modules
 const shortID = require("shortid");
 
+//RemoveFile
+const removeFile=require("../utils/removeFile");
+
 exports.getIndex = (req, res) => {
     let counts = {
         totalPatients: 0,
@@ -159,7 +162,21 @@ exports.postAddRecord = (req, res) => {
 
 exports.postDeleteRecord = (req, res) => {
     const body = JSON.parse(JSON.stringify(req.body));
+    let imageURL="";
+    Patient.findOne({_id:body.patientID}).then(patient=>{
+        if(patient){
+            imageURL=patient.imageURL;
+        }else{
+            req.flash("err-message","Error occured!");
+            res.redirect("/image");
+        }
+    }).catch(err=>{
+        console.log(err);
+    })
     Patient.deleteOne({ _id: body.patientID }).then(() => {
+        if(imageURL){
+            removeFile(imageURL);
+        }
         res.redirect("/manage");
 
     }).catch(err => {
@@ -225,6 +242,9 @@ exports.postEditRecord = (req, res) => {
             if (data.userID.toString() === req.session.user._id.toString()) {
                 data.firstName = body.firstName;
                 data.lastName = body.lastName;
+                if(data.imageURL){
+                    removeFile(data.imageURL);
+                }
                 data.imageURL=imageURL;
                 data.address = body.address;
                 data.dateOfBirth = body.dateOfBirth;
